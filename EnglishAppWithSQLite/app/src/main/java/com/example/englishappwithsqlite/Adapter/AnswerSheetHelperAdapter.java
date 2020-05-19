@@ -31,31 +31,61 @@ public class AnswerSheetHelperAdapter extends RecyclerView.Adapter<AnswerSheetHe
         this.currentQuestionList = currentQuestionList;
     }
 
+//    @NonNull
+//    @Override
+//    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+//        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_answer_sheet_helper,viewGroup,false);
+//        return new MyViewHolder(itemView);
+//    }
+
+
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_answer_sheet_helper,viewGroup,false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_answer_sheet_helper,parent,false);
         return new MyViewHolder(itemView);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+//    @Override
+//    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+//
+//        myViewHolder.txt_question_num.setText(String.valueOf(i+1)); // Show question number
+//        if(currentQuestionList.get(i).getType() == Common.ANSWER_TYPE.RIGHT_ANSWER)
+//            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_right_answer);
+//        else if(currentQuestionList.get(i).getType() == Common.ANSWER_TYPE.WRONG_ANSWER)
+//            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_wrong_answer);
+//        else
+//            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_no_answer);
+//        myViewHolder.setiRecyclerHelperClick(new IRecyclerHelperClick() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                //When user click to item , navigate to this question on Question Activity
+//                LocalBroadcastManager.getInstance(context)
+//                        .sendBroadcast(new Intent(
+//                                Common.KEY_GO_TO_QUESTION
+//                        ).putExtra(Common.KEY_GO_TO_QUESTION,position));
+//            }
+//        });
+//    }
 
-        myViewHolder.txt_question_num.setText(String.valueOf(i+1)); // Show question number
-        if(currentQuestionList.get(i).getType() == Common.ANSWER_TYPE.RIGHT_ANSWER)
-            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_right_answer);
-        else if(currentQuestionList.get(i).getType() == Common.ANSWER_TYPE.WRONG_ANSWER)
-            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_wrong_answer);
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.txt_question_num.setText(String.valueOf(position+1)); // Show question number
+        if(currentQuestionList.get(position).getType() == Common.ANSWER_TYPE.RIGHT_ANSWER)
+            holder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_right_answer);
+        else if(currentQuestionList.get(position).getType() == Common.ANSWER_TYPE.WRONG_ANSWER)
+            holder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_wrong_answer);
         else
-            myViewHolder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_no_answer);
-        myViewHolder.setiRecyclerHelperClick(new IRecyclerHelperClick() {
+            holder.layout_wrapper.setBackgroundResource(R.drawable.grid_question_no_answer);
+        holder.setiRecyclerHelperClick(new IRecyclerHelperClick() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(View view, int i) {
                 //When user click to item , navigate to this question on Question Activity
                 LocalBroadcastManager.getInstance(context)
                         .sendBroadcast(new Intent(
                                 Common.KEY_GO_TO_QUESTION
-                        ).putExtra(Common.KEY_GO_TO_QUESTION,position));
+                        ).putExtra(Common.KEY_GO_TO_QUESTION,i));
             }
         });
     }

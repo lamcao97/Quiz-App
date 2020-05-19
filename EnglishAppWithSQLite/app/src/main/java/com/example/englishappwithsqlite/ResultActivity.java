@@ -36,7 +36,6 @@ public class ResultActivity extends AppCompatActivity {
     TextView txt_timer,txt_result,txt_right_answer;
     Button btn_filter_total,btn_filter_right,btn_filter_wrong,btn_filter_no_answer;
     RecyclerView recycler_result;
-
     ResultGridAdapter adapter,filtered_adapter;
 
     BroadcastReceiver backToQuestion = new BroadcastReceiver() {
@@ -82,11 +81,19 @@ public class ResultActivity extends AppCompatActivity {
         btn_filter_wrong = findViewById(R.id.btn_filter_wrong_answer);
         btn_filter_total = findViewById(R.id.btn_filter_total);
 
+//        answer_sheet = findViewById(R.id.answer_sheet);
+//        answer_sheet.setHasFixedSize(true);
+//        answer_sheet.setLayoutManager( new GridLayoutManager(this,3));
+
         recycler_result = findViewById(R.id.recycler_result);
         recycler_result.setHasFixedSize(true);
         recycler_result.setLayoutManager( new GridLayoutManager(this,3));
 
         adapter = new ResultGridAdapter(this,Common.answerSheetList);
+
+//        answer_sheet.addItemDecoration(new SpaceDecoration(4));
+//        answer_sheet.setAdapter(adapter);
+
         recycler_result.addItemDecoration(new SpaceDecoration(4));
         recycler_result.setAdapter(adapter);
 
@@ -123,10 +130,14 @@ public class ResultActivity extends AppCompatActivity {
                 if(adapter == null)
                 {
                     adapter = new ResultGridAdapter(ResultActivity.this,Common.answerSheetList);
+//                    answer_sheet.setAdapter(adapter);
                     recycler_result.setAdapter(adapter);
                 }
-                else
+                else{
+//                    answer_sheet.setAdapter(adapter);
                     recycler_result.setAdapter(adapter);
+                }
+
             }
         });
 
@@ -140,6 +151,7 @@ public class ResultActivity extends AppCompatActivity {
                         Common.answerSheetListFiltered.add(Common.answerSheetList.get(i));
                 }
                 filtered_adapter = new ResultGridAdapter(ResultActivity.this,Common.answerSheetListFiltered);
+//                answer_sheet.setAdapter(filtered_adapter);
                 recycler_result.setAdapter(filtered_adapter);
             }
         });
@@ -154,6 +166,7 @@ public class ResultActivity extends AppCompatActivity {
                         Common.answerSheetListFiltered.add(Common.answerSheetList.get(i));
                 }
                 filtered_adapter = new ResultGridAdapter(ResultActivity.this,Common.answerSheetListFiltered);
+//                answer_sheet.setAdapter(filtered_adapter);
                 recycler_result.setAdapter(filtered_adapter);
             }
         });
@@ -168,6 +181,7 @@ public class ResultActivity extends AppCompatActivity {
                         Common.answerSheetListFiltered.add(Common.answerSheetList.get(i));
                 }
                 filtered_adapter = new ResultGridAdapter(ResultActivity.this,Common.answerSheetListFiltered);
+//                answer_sheet.setAdapter(filtered_adapter);
                 recycler_result.setAdapter(filtered_adapter);
             }
         });

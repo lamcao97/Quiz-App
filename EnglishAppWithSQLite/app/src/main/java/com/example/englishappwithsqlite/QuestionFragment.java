@@ -64,7 +64,7 @@ public class QuestionFragment extends Fragment implements IQuestion {
                 Picasso.get().load(question.getQuestionImage()).into(img_question, new Callback() {
                     @Override
                     public void onSuccess() {
-
+                        progressBar.setVisibility(View.GONE);
                     }
 
                     @Override

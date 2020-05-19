@@ -59,9 +59,9 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/sliding_tabs"
-            app:tabMode="scrollable"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpaper"

@@ -16,7 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/toolbar"
-            android:background="?attr/colorPrimary">
+            android:background="?attr/colorPrimary"
+            app:menu="@menu/category_menu">
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -25,6 +27,6 @@
         android:id="@+id/recycler_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"/>
-
+        android:layout_margin="8dp"
+        />
 </LinearLayout>
